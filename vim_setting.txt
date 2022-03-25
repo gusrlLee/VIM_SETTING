@@ -1,5 +1,6 @@
 " MY VIM SETTING -- hyeon
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/fzf.vim
 "=================================================================
 " PLUGIN
 call vundle#begin()
@@ -10,10 +11,12 @@ call vundle#begin()
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'blueyed/vim-diminactive'
     Plugin 'nathanaelkane/vim-indent-guides'
-    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plugin 'junegunn/fzf.vim'
 call vundle#end()
 "=================================================================
 
+set csverb
 set ts=4 " tap size
 set sts=4
 set sw=4 
@@ -31,6 +34,10 @@ colorscheme jellybeans
 " setting airline top box
 let g:airline#extensions#tabline#enabled = 1
 
+" setting fzf gui color
+let g:fzf_preview_window = 'right:50%'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+
 
 " for blueyed/vim-diminactive
 let g:diminactive_enable_focus = 1
@@ -46,16 +53,16 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
-" for CtrlP 
-let g:ctrlp_map = '<c-f>'
-let g:ctrlp_cmd = 'CtrlP'
+" for CtrlP
+"let g:ctrlp_map = '<c-f>'
+"let g:ctrlp_cmd = 'CtrlP'
 
 " ----------------- Key Mapping----------------------------------
 map <F9> <ESC>:Tagbar<CR>
 map <C-b> <ESC>:NERDTree<CR>
-map <C-j> <ESC>:bn<CR>
-map <C-k> <ESC>:bp<CR>
-map <C-f> <ESC>:CtrlP<CR>
+map <C-h> <ESC>:bn<CR>
+map <C-l> <ESC>:bp<CR>
+map <C-f> <ESC>:Files<CR>
 
 syntax on
 if has("syntax")
